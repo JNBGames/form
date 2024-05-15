@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Contato</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script66.js"></script>
+</head>
+<body>
+<form id="contactForm">
+        <h1>Formulário de Contato</h1>
+        <h3 for="name">Nome:</h3>
+        <input type="text" id="name" name="name">
+        <div id="nameError" class="error"></div>
+
+        <h3 for="email">Email:</h3>
+        <input type="text" id="email" name="email">
+        <div id="emailError" class="error"></div>
+
+        <h3 for="message">Mensagem:</h3>
+        <textarea id="message" name="message"></textarea>
+        <div id="messageError" class="error"></div>
+
+        <button type="submit" id="button">Enviar</button>
+    </form>
+
+
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    var name = document.getElementById("name").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var message = document.getElementById("message").value.trim();
+    var nameError = document.getElementById("nameError");
+    var emailError = document.getElementById("emailError");
+    var messageError = document.getElementById("messageError");
+    nameError.textContent = "";
+    emailError.textContent = "";
+    messageError.textContent = "";
+    if (name === "") {
+        nameError.textContent = "Por favor, preencha o campo Nome.";
+        document.getElementById("name").style.borderColor = "red";
+    }
+    if (email === "") {
+        emailError.textContent = "Por favor, preencha o campo Email.";
+        document.getElementById("email").style.borderColor = "red";
+    }
+    if (message === "") {
+        messageError.textContent = "Por favor, preencha o campo Mensagem.";
+        document.getElementById("message").style.borderColor = "red";
+    }
+    if (name !== "" && email !== "" && message !== "") {
+        alert("Mensagem enviada com sucesso!");
+        document.getElementById("contactForm").reset();
+    }
+});
+    </script>
+
+    
+</body>
+</html>
